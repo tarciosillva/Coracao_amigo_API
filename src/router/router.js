@@ -4,7 +4,7 @@ const router = express.Router()
 const FamilyController = require('../controller/FamilyController')
 const VoluntaryController = require('../controller/VoluntaryController')
 
-router.post('/newFamily', FamilyController.newFamily)
+router.post('/user/:user_id/newFamily', FamilyController.newFamily)
 router.get('/listAllFamilies', FamilyController.listAllFamilies)
 router.get('/listFamily/:responsibleId', FamilyController.listFamily)
 

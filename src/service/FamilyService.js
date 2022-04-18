@@ -1,9 +1,9 @@
 const FamilyRepository = require('../Repository/FamilyRepository')
 
 class FamilyService {
-    async newFamily(family) {
+    async newFamily(family, user_id) {
         try {
-            const res = await FamilyRepository.newFamily(family)
+            const res = await FamilyRepository.newFamily({...family, id_usuario_criacao:parseInt(user_id)})
             return res
         } catch (error) {
             console.error(error)

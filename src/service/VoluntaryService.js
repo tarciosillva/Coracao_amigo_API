@@ -1,17 +1,22 @@
+const VoluntaryRepository = require('../Repository/VoluntaryRepository')
+
 class VoluntaryService {
-    async newVoluntary(request, response) {
+    async newVoluntary(voluntary) {
         try {
-
+            const res = await VoluntaryRepository.newVoluntary(voluntary)
+            return res
         } catch (error) {
-
+            console.error(error)
+            return error
         }
     }
 
-    async listAllVoluntaries(request, response) {
+    async listAllVoluntaries() {
         try {
-
+            const res = await VoluntaryRepository.listAllVoluntary()
+            return res
         } catch (error) {
-
+            console.error(error)
         }
     }
 }

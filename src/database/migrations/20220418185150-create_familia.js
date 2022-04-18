@@ -2,12 +2,19 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Familia', {
+    await queryInterface.createTable('familias', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
+      },
+      id_usuario_criacao:{
+        type:Sequelize.INTEGER,
+        allowNull:false,
+        references:{model:'usuarios', key:'id'},
+        onUpdate:'CASCADE',
+        onDelete:'CASCADE'
       },
       membros: {
         type: Sequelize.INTEGER,
@@ -32,6 +39,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Familia');
+    await queryInterface.dropTable('familias');
   }
 };

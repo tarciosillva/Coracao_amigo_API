@@ -1,33 +1,22 @@
-const Sequelize = require('sequelize')
-const database = require('../database')
+const {Model, DataTypes} = require('sequelize')
 
-const Moradia_familia = database.sequelize.define('Moradia_familia', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
-    },
-    tipo_moradia: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    estrutura_moradia: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    qualidade_agua: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    qualidade_eletrica: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    foto: {
-        type: Sequelize.STRING,
-        allowNull: false
+class Moradia_familia extends Model{
+    static init(connection){
+        super.init({
+            tipo_moradia:DataTypes.STRING,
+            condicao_moradia:DataTypes.STRING,
+            estrutura_moradia:DataTypes.STRING,
+            qualidade_agua:DataTypes.STRING,
+            qualidade_eletrica:DataTypes.STRING,
+            foto:DataTypes.STRING
+        },{
+            sequelize:connection
+        })
     }
-})
 
-module.exports={Moradia_familia}
+    static associate(models){
+        this.hasOne(models.Familia, {foreignKey:'id_familia', as: 'moradia_familia'})
+    }
+}
+
+module.exports = Moradia_familia
