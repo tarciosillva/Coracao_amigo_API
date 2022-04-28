@@ -8,7 +8,6 @@ router.post('/user/:user_id/newFamily', FamilyController.newFamily)
 router.get('/listAllFamilies', FamilyController.listAllFamilies)
 router.get('/listFamily/:responsibleId', FamilyController.listFamily)
 
-
 router.post('/newVoluntary', VoluntaryController.newVoluntary)
 router.get('/listAllVoluntaries', VoluntaryController.listAllVoluntaries)
 
