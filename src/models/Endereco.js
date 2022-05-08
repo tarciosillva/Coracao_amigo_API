@@ -1,8 +1,9 @@
 const {Model, DataTypes} = require('sequelize')
-class Endereco_familia extends Model{
+class Enderecos extends Model{
     static init(connection){
         super.init({
             municipio:DataTypes.STRING,
+            bairro:DataTypes.STRING,
             rua:DataTypes.STRING,
             numero:DataTypes.INTEGER,
             geolocalizacao:DataTypes.STRING
@@ -17,4 +18,4 @@ class Endereco_familia extends Model{
     }
 }
 
-module.exports = Endereco_familia
+module.exports = Enderecos

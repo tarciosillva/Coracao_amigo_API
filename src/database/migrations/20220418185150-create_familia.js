@@ -11,10 +11,10 @@ module.exports = {
       },
       id_usuario_criacao:{
         type:Sequelize.INTEGER,
-        allowNull:false,
         references:{model:'usuarios', key:'id'},
         onUpdate:'CASCADE',
-        onDelete:'CASCADE'
+        onDelete:'CASCADE',
+        allowNull:false
       },
       membros: {
         type: Sequelize.INTEGER,

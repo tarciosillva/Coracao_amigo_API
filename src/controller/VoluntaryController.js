@@ -1,10 +1,16 @@
 const VoluntaryService = require('../service/VoluntaryService')
+const AdressService = require('../service/AdressService')
 class VoluntaryController {
     async newVoluntary(request, response) {
-        const voluntary = request.body
+        const newVoluntary = request.body.voluntary
+        const newAdress = request.body.adress
         try {
-            const res = await VoluntaryService.newVoluntary(voluntary)
-            response.send(res)
+            const voluntaryRegisted = await VoluntaryService.newVoluntary(newVoluntary)
+            const adress = await AdressService.newAdressUser(newAdress, voluntaryRegisted.dataValues.id)
+            response.send({
+                voluntary:voluntaryRegisted,
+                adress:adress
+            })
         } catch (error) {
             response.staus(500).json({
                 error: error

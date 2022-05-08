@@ -8,6 +8,7 @@ const Dependente =  require('../models/Dependente')
 const Moradia_familia =  require('../models/Moradia_familia')
 const Responsavel_familiar =  require('../models/Responsavel_familiar')
 const Rota =  require('../models/Rota')
+
 const connection = new Sequelize(dbConfig)
 
 Familia.init(connection)
@@ -24,7 +25,5 @@ Dependente.associate(connection.models)
 Moradia_familia.associate(connection.models)
 Responsavel_familiar.associate(connection.models)
 Rota.associate(connection.models)
-
-Familia.init(connection)
 
 module.exports = connection

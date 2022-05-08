@@ -6,22 +6,22 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
-        allowNull: false,
         primaryKey: true,
+        allowNull: false,
       },
       id_voluntario:{
         type:Sequelize.INTEGER,
-        allowNull:false,
         references:{model:'usuarios', key:'id'},
         onUpdate:'CASCADE',
-        onDelete:'CASCADE'
+        onDelete:'CASCADE',
+        allowNull:false,
       },
       id_familia:{
-        type:Sequelize.ARRAY(Sequelize.INTEGER),
-        allowNull:false,
+        type: Sequelize.INTEGER,
         references:{model:'familias', key:'id'},
         onUpdate:'CASCADE',
-        onDelete:'CASCADE'
+        onDelete:'CASCADE',
+        allowNull:false,
       },
       nome_rota: {
         type: Sequelize.STRING,

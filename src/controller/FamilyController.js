@@ -2,10 +2,10 @@ const FamilyService = require('../service/FamilyService')
 
 class FamilyController {
     async newFamily(request, response) {
-        const {user_id} = request.params
+        const {voluntaryId} = request.params
         const family = request.body
         try {
-            const res = await FamilyService.newFamily(family,user_id)
+            const res = await FamilyService.newFamily(family,voluntaryId)
             response.send(res)
         } catch (error) {
             response.send(error).stausCode(500)

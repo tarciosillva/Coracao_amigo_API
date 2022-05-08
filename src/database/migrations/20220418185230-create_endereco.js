@@ -25,6 +25,10 @@ module.exports = {
         type:Sequelize.STRING,
         allowNull:false
       },
+      bairro:{
+        type:Sequelize.STRING,
+        allowNull:false
+      },
       rua:{
         type:Sequelize.STRING,
         allowNull:false
@@ -35,7 +39,6 @@ module.exports = {
       },
       geolocalizacao:{
         type:Sequelize.STRING,
-        allowNull:false
       },
       created_at: {
         type: Sequelize.DATE,
