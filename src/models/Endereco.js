@@ -13,8 +13,8 @@ class Enderecos extends Model{
     }
 
     static associate(models){
-        this.belongsTo(models.Usuario, {foreignKey:'id_usuario', as:'endereco_usuario'})
-        this.belongsTo(models.Familia, {foreignKey:'id_familia', as:'endereco_familia'})
+        this.belongsTo(models.Usuarios, {foreignKey:'id_usuario', as:'endereco_usuario'})
+        this.belongsTo(models.Familias, {foreignKey:'id_familia', as:'endereco_familia'})
     }
 }
 

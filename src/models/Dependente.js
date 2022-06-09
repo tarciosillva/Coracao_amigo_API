@@ -1,5 +1,5 @@
 const { Model, DataTypes} = require('sequelize')
-class Dependente extends Model {
+class Dependentes extends Model {
     static init(connection) {
         super.init({
             nome: DataTypes.STRING,
@@ -13,11 +13,11 @@ class Dependente extends Model {
         })
     }
     static associate(models) {
-        this.belongsTo(models.Familia, {
+        this.belongsTo(models.Familias, {
             foreignKey: 'id_familia',
             as: 'dependente_familia'
         })
     }
 }
 
-module.exports = Dependente
+module.exports = Dependentes

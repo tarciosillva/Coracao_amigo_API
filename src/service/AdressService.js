@@ -35,6 +35,28 @@ class AdressService {
         }
     }
 
+    async listAdressFamily(familyId) {
+        try {
+            const res = await AdressRepository.listAdressFamily(familyId)
+            return res
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async listCordinatesGeolocalizationFamilyAdress() {
+        try {
+            const res = await AdressRepository.listCordinatesGeolocalizationFamilyAdress()
+            res.forEach((element, index) => {
+                var coordinates = element.geolocalizacao.split(',')
+                res[index].geolocalizacao = coordinates
+            })
+            return res
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
 }
 
 module.exports = new AdressService()

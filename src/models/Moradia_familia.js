@@ -1,6 +1,6 @@
 const {Model, DataTypes} = require('sequelize')
 
-class Moradia_familia extends Model{
+class Moradia_familias extends Model{
     static init(connection){
         super.init({
             tipo_moradia:DataTypes.STRING,
@@ -15,8 +15,8 @@ class Moradia_familia extends Model{
     }
 
     static associate(models){
-        this.hasOne(models.Familia, {foreignKey:'id_familia', as: 'moradia_familia'})
+        this.belongsTo(models.Familias, {foreignKey:'id_familia', as: 'moradia_familia'})
     }
 }
 
-module.exports = Moradia_familia
+module.exports = Moradia_familias

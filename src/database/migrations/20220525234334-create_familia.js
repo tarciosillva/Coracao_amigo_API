@@ -2,34 +2,39 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('rotas', {
+    await queryInterface.createTable('familias', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
-        primaryKey: true,
         allowNull: false,
+        primaryKey: true,
       },
-      id_voluntario:{
+      id_usuario_criacao:{
         type:Sequelize.INTEGER,
         references:{model:'usuarios', key:'id'},
         onUpdate:'CASCADE',
-        onDelete:'CASCADE',
-        allowNull:false,
+        allowNull:false
       },
-      id_familia:{
-        type: Sequelize.INTEGER,
-        references:{model:'familias', key:'id'},
+      id_rota:{
+        type:Sequelize.INTEGER,
+        references:{model:'rotas', key:'id'},
         onUpdate:'CASCADE',
-        onDelete:'CASCADE',
-        allowNull:false,
+        allowNull:false
       },
-      nome_rota: {
-        type: Sequelize.STRING,
-        allowNull:false,
+      estado_atual:{
+        type:Sequelize.STRING,
+        allowNull:false
       },
-      status: {
+      membros: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      renda_familiar: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+      },
+      programas_governo: {
         type: Sequelize.STRING,
-        allowNull:false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -43,6 +48,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('rotas');
+    await queryInterface.dropTable('familias');
   }
 };

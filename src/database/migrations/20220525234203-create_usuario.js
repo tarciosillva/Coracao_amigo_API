@@ -2,30 +2,36 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('familias', {
+    await queryInterface.createTable('usuarios', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
-      id_usuario_criacao:{
-        type:Sequelize.INTEGER,
-        references:{model:'usuarios', key:'id'},
-        onUpdate:'CASCADE',
-        onDelete:'CASCADE',
-        allowNull:false
-      },
-      membros: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      renda_familiar: {
-        type: Sequelize.DOUBLE,
-        allowNull: false,
-      },
-      programas_governo: {
+      nome: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      senha: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      cpf: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      telefone: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      perfil:{
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -39,6 +45,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('familias');
+    await queryInterface.dropTable('usuarios');
   }
 };

@@ -1,4 +1,6 @@
 const Adress = require('../models/Endereco')
+const Op = require('sequelize').Op;
+
 
 class AdressRepository {
     async newAdress(objectAdress) {
@@ -13,9 +15,41 @@ class AdressRepository {
 
     async listAdressUser(userId) {
         try {
-            await Adress.findByPk(userId).then((result) => {
-                return result
+            const result = await Adress.findOne({
+                where: {
+                    id_usuario: userId
+                }
             })
+            return result
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async listAdressFamily(familyId) {
+        try {
+            const result = await Adress.findOne({
+                where: {
+                    id_familia: familyId
+                }
+            })
+            return result
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async listCordinatesGeolocalizationFamilyAdress() {
+        try {
+            const result = await Adress.findAll({
+                where: {
+                    id_familia: {
+                        [Op.ne]: null
+                    }
+                },
+                attributes: ['geolocalizacao', 'bairro', 'rua', 'numero']
+            })
+            return result
         } catch (error) {
             console.log(error)
         }

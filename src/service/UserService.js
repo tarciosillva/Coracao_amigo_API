@@ -1,12 +1,12 @@
-const VoluntaryRepository = require('../Repository/VoluntaryRepository')
+const UserRepository = require('../Repository/UserRepository')
 const bcript = require("bcrypt");
-class VoluntaryService {
-    async newVoluntary(voluntary) {
+class UserService {
+    async newUser(user) {
         const salt = bcript.genSaltSync(12);
         try {
-            const hash = await bcript.hash(voluntary.senha, salt);
-            voluntary.senha = hash
-            const res = await VoluntaryRepository.newVoluntary(voluntary)
+            const hash = await bcript.hash(user.senha, salt);
+            user.senha = hash
+            const res = await UserRepository.newUser(user)
             return res
         } catch (error) {
             console.error(error)
@@ -16,7 +16,7 @@ class VoluntaryService {
 
     async voluntaryId(id) {
         try {
-            const res = await VoluntaryRepository.voluntaryId(id)
+            const res = await UserRepository.voluntaryId(id)
             return res
         } catch (error) {
             console.error(error)
@@ -25,7 +25,7 @@ class VoluntaryService {
 
     async listAllVoluntaries() {
         try {
-            const res = await VoluntaryRepository.listAllVoluntary()
+            const res = await UserRepository.listAllVoluntary()
             return res
         } catch (error) {
             console.error(error)
@@ -33,4 +33,4 @@ class VoluntaryService {
     }
 }
 
-module.exports = new VoluntaryService()
+module.exports = new UserService()

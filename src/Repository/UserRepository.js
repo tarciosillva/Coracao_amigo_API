@@ -1,9 +1,9 @@
-const Voluntary = require('../models/Usuario')
+const User = require('../models/Usuario')
 
-class VoluntaryRepository {
-    async newVoluntary(objectVoluntary) {
+class UserRepository {
+    async newUser(user) {
         try {
-            const result = await Voluntary.create(objectVoluntary)
+            const result = await User.create(user)
             return result
         } catch (error) {
             console.error(error)
@@ -13,7 +13,7 @@ class VoluntaryRepository {
 
     async voluntaryId(id) {
         try {
-            await Voluntary.findByPk(id).then((result) => {
+            await User.findByPk(id).then((result) => {
                 return result
             })
         } catch (error) {
@@ -23,8 +23,11 @@ class VoluntaryRepository {
 
     async listAllVoluntary() {
         try {
-            const result  = await Voluntary.findAll({
-                attributes:['id','nome','email','senha','cpf','telefone']
+            const result = await User.findAll({
+                where: {
+                    perfil: 'Voluntario'
+                },
+                attributes: ['id', 'nome', 'email', 'senha', 'cpf', 'telefone', 'perfil']
             })
             return result
         } catch (error) {
@@ -33,4 +36,4 @@ class VoluntaryRepository {
     }
 }
 
-module.exports = new VoluntaryRepository()
+module.exports = new UserRepository()

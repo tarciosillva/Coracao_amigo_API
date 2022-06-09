@@ -1,6 +1,6 @@
 const { Model, DataTypes} = require('sequelize')
 
-class Rota extends Model {
+class Rotas extends Model {
     static init(connection) {
         super.init({
             nome_rota: DataTypes.STRING,
@@ -9,10 +9,6 @@ class Rota extends Model {
             sequelize: connection
         })
     }
-    static associate(models) {
-        this.belongsTo(models.Familia, { foreignKey: 'id_familia',as: 'rota_familia'})
-        this.belongsTo(models.Usuario, { foreignKey: 'id_voluntario',as: 'rota_voluntarios'})
-    }
 }
 
-module.exports = Rota
+module.exports = Rotas

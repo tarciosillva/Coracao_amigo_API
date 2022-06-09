@@ -1,8 +1,9 @@
 const {Model, DataTypes} = require('sequelize')
 
-class Familia extends Model{
+class Familias extends Model{
     static init(connection){
         super.init({
+            estado_atual:DataTypes.STRING,
             membros:DataTypes.INTEGER,
             renda_familiar:DataTypes.DOUBLE,
             programas_governo:DataTypes.STRING,
@@ -12,8 +13,9 @@ class Familia extends Model{
     }
 
     static associate(models){
-        this.hasOne(models.Usuario, {foreignKey:'id_usuario_criacao', as: 'usuario_criador_familia'})
+        this.belongsTo(models.Usuarios, {foreignKey:'id_usuario_criacao', as: 'usuario'})
+        this.belongsTo(models.Rotas, {foreignKey:'id_rota', as: 'rota_familia'})
     }
 }
 
-module.exports = Familia
+module.exports = Familias
